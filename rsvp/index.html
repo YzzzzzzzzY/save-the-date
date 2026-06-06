@@ -103,20 +103,26 @@
         <div class="form-content">
             <div class="form-header">
                 <h2>Kindly Respond</h2>
-                <p>Please RSVP by July 15, 2026.<br>One response per invitation, please.</p>
+                <p>Please RSVP by July 10, 2026.<br>One response per invitation, please.</p>
             </div>
 
             <div class="form-container">
                 <form class="wedding-form" id="rsvpForm" method="POST" target="hidden_iframe">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="yourName">Your name</label>
-                            <input type="text" id="yourName" required placeholder="Full name">
-                        </div>
-                        <div class="form-group">
-                            <label for="partnerName">Partner's name <span class="label-optional">(optional)</span></label>
-                            <input type="text" id="partnerName" placeholder="If bringing a guest">
-                        </div>
+                    <div class="form-group">
+                        <label for="yourName">Your name</label>
+                        <input type="text" id="yourName" required placeholder="Full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="bringingPartner">
+                            <span>I'm bringing my partner</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group partner-group" id="partnerGroup" hidden>
+                        <label for="partnerName">Partner's name</label>
+                        <input type="text" id="partnerName" placeholder="Full name">
                     </div>
 
                     <div class="form-group">

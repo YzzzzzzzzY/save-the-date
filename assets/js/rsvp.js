@@ -53,11 +53,32 @@ function bindGoogleFormFields(form) {
     partialInput.value = partialResponse;
 }
 
+function updatePartnerVisibility(bringingPartner, partnerGroup, partnerInput) {
+    const showPartner = bringingPartner.checked;
+    partnerGroup.hidden = !showPartner;
+    partnerInput.required = showPartner;
+
+    if (showPartner) {
+        partnerInput.name = RSVP_FORM_CONFIG.fields.partnerName;
+    } else {
+        partnerInput.removeAttribute('name');
+        partnerInput.value = '';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('rsvpForm');
     const successMessage = document.getElementById('successMessage');
+    const bringingPartner = document.getElementById('bringingPartner');
+    const partnerGroup = document.getElementById('partnerGroup');
+    const partnerInput = document.getElementById('partnerName');
 
     bindGoogleFormFields(form);
+    updatePartnerVisibility(bringingPartner, partnerGroup, partnerInput);
+
+    bringingPartner.addEventListener('change', () => {
+        updatePartnerVisibility(bringingPartner, partnerGroup, partnerInput);
+    });
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
