@@ -16,9 +16,8 @@ Yes — create the RSVP Google Form **before** going live. Use these exact quest
 |---|---------------|---------------|-----------------|
 | 1 | Short answer | Your name | Required |
 | 2 | Short answer | Partner's name | Optional |
-| 3 | Multiple choice | Will you attend? | `Yes, joyfully!` and `Sorry, can't make it` — match exactly |
-| 4 | Short answer | Total guests attending | Number |
-| 5 | Paragraph | Notes | Optional |
+| 3 | Multiple choice | Will you attend? | `Yes` and `No` — match exactly |
+| 4 | Paragraph | Notes | Optional |
 
 ### Wire the form to the site
 

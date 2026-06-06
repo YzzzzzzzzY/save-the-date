@@ -1,15 +1,13 @@
-// Update after creating the RSVP Google Form (see README.md).
 const RSVP_FORM_CONFIG = {
-    action: 'https://docs.google.com/forms/d/e/REPLACE_WITH_FORM_ID/formResponse',
+    action: 'https://docs.google.com/forms/d/e/1FAIpQLSek3O0Ta8dYN3tGK3NvSJUkrFExTW_OPvDdD_7Rm3ABGWyptQ/formResponse',
     fields: {
-        yourName: 'entry.REPLACE_YOUR_NAME',
-        partnerName: 'entry.REPLACE_PARTNER_NAME',
-        attending: 'entry.REPLACE_ATTENDING',
-        guestCount: 'entry.REPLACE_GUEST_COUNT',
-        notes: 'entry.REPLACE_NOTES'
+        yourName: 'entry.253243517',
+        partnerName: 'entry.407071966',
+        attending: 'entry.1291323824',
+        notes: 'entry.206253920'
     },
-    fbzx: 'REPLACE_FBZX',
-    partialResponse: '[null,null,"REPLACE_FBZX"]'
+    fbzx: '4587660607938263854',
+    partialResponse: '[null,null,"4587660607938263854"]'
 };
 
 function scrollToSection(id) {
@@ -34,7 +32,6 @@ function bindGoogleFormFields(form) {
         radio.name = fields.attending;
     });
 
-    document.getElementById('guestCount').name = fields.guestCount;
     document.getElementById('notes').name = fields.notes;
 
     let fbzxInput = form.querySelector('input[name="fbzx"]');
@@ -56,59 +53,11 @@ function bindGoogleFormFields(form) {
     partialInput.value = partialResponse;
 }
 
-function isAttendingYes(form) {
-    const attendingField = form.querySelector('input[type="radio"]:checked');
-    return attendingField && attendingField.value.startsWith('Yes');
-}
-
-function updateGuestCountVisibility(form, guestCountGroup) {
-    guestCountGroup.style.display = isAttendingYes(form) ? 'block' : 'none';
-}
-
-function syncGuestCountFromPartner(partnerInput, guestCountInput, form) {
-    if (!isAttendingYes(form)) {
-        return;
-    }
-
-    const partnerName = partnerInput.value.trim();
-    const currentCount = Number(guestCountInput.value);
-
-    if (partnerName && currentCount < 2) {
-        guestCountInput.value = '2';
-    } else if (!partnerName && currentCount === 2) {
-        guestCountInput.value = '1';
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('rsvpForm');
     const successMessage = document.getElementById('successMessage');
-    const guestCountGroup = document.getElementById('guestCountGroup');
-    const guestCountInput = document.getElementById('guestCount');
-    const partnerInput = document.getElementById('partnerName');
-    const attendingRadios = form.querySelectorAll('input[name="attending"]');
 
     bindGoogleFormFields(form);
-    updateGuestCountVisibility(form, guestCountGroup);
-
-    partnerInput.addEventListener('input', () => {
-        syncGuestCountFromPartner(partnerInput, guestCountInput, form);
-    });
-
-    attendingRadios.forEach((radio) => {
-        radio.addEventListener('change', () => {
-            updateGuestCountVisibility(form, guestCountGroup);
-            syncGuestCountFromPartner(partnerInput, guestCountInput, form);
-        });
-    });
-
-    document.getElementById('decreaseGuest').addEventListener('click', () => {
-        guestCountInput.value = Math.max(1, Number(guestCountInput.value) - 1);
-    });
-
-    document.getElementById('increaseGuest').addEventListener('click', () => {
-        guestCountInput.value = Math.min(10, Number(guestCountInput.value) + 1);
-    });
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -134,10 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     form.addEventListener('submit', function() {
-        if (!isAttendingYes(form)) {
-            guestCountInput.value = '0';
-        }
-
         const btnText = form.querySelector('.btn-text');
         const btnLoading = form.querySelector('.btn-loading');
 
