@@ -328,10 +328,97 @@ body {
 }
 
 /* Placeholder styling */
-.form-group input::placeholder {
+.form-group input::placeholder,
+.form-group textarea::placeholder {
     color: #aaa;
     font-weight: 300;
     font-style: italic;
+}
+
+.label-optional {
+    font-weight: 300;
+    color: #888;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    color: #2c2c2c;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    resize: vertical;
+    min-height: 5rem;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8B4513;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.1), 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #2c2c2c;
+    cursor: pointer;
+}
+
+.radio-item input[type="radio"] {
+    accent-color: #8B4513;
+    width: 1rem;
+    height: 1rem;
+}
+
+.guest-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.guest-counter input[type="number"] {
+    width: 4rem;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(255, 255, 255, 0.3);
+    color: #2c2c2c;
+}
+
+.counter-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid rgba(139, 69, 19, 0.3);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    color: #8B4513;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.counter-btn:hover {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: #8B4513;
 }
 
 /* Success Message Styles */
